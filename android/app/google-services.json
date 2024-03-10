@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "258248146239",
+    "project_id": "authorization-9f41e",
+    "storage_bucket": "authorization-9f41e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258248146239:android:d25d58af87a5fbe049278a",
+        "android_client_info": {
+          "package_name": "com.example.alarmproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9WNBgXJKKDBpfyXbbbyqVu48HVYg_oIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
