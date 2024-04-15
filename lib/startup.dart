@@ -31,7 +31,7 @@ class _startUpState extends State<startUp> {
               ),
               //bottom: PreferredSize(
               //preferredSize: Size.fromHeight(170), child: SizedBox()),
-            ),
+            ).animate().slideY(duration: 2000.ms),
           ),
           Container(
             height: 270,
@@ -44,13 +44,13 @@ class _startUpState extends State<startUp> {
               ),
               //bottom: PreferredSize(
               // preferredSize: Size.fromHeight(170), child: SizedBox()),
-            ).animate().slideY(duration: 2000.ms),
+            ).animate().slideY(duration: 2000.ms, delay: 500.ms),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 200),
             child: Container(
                 alignment: Alignment.bottomRight,
-                child: Lottie.asset("Lottie/plane2.json", width: 200)),
+                child: Lottie.asset("Lottie/plane.json", width: 200)),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 250, 0, 0),
@@ -65,7 +65,7 @@ class _startUpState extends State<startUp> {
                     fontSize: 36,
                     color: Color.fromARGB(255, 12, 12, 12),
                   )),
-                ).animate().fade(duration: 2000.ms).slideX(),
+                ).animate().fade(duration: 2000.ms).slideX(duration: 2000.ms),
                 SizedBox(
                   height: 10,
                 ),
@@ -77,10 +77,10 @@ class _startUpState extends State<startUp> {
                     style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
                       fontSize: 21,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: Color.fromARGB(255, 235, 235, 235),
                     )),
-                  ).animate().tint(
-                      color: Color.fromARGB(255, 255, 157, 1),
+                  ).animate().fade(delay: 2000.ms, begin: 0.1, end: 0.8).tint(
+                      color: Color.fromARGB(255, 47, 47, 47),
                       duration: 2000.ms),
                 ),
                 const SizedBox(

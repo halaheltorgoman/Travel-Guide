@@ -1,4 +1,5 @@
 //import 'package:travelguide/signin.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:travelguide/google_apple.dart';
 import 'package:travelguide/services/google_auth.dart';
 import 'package:travelguide/textfields.dart';
@@ -50,191 +51,261 @@ class _RegisterUserState extends State<RegisterUser> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            backgroundColor: Color.fromARGB(235, 249, 187, 3),
+            buttonPadding: EdgeInsets.all(8),
+            backgroundColor: Color.fromARGB(250, 184, 1, 1),
             title: Center(
-                child: Text(
-              message,
-              style: const TextStyle(
-                color: Colors.white,
+              child: Text(
+                message,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                    textStyle: const TextStyle(
+                  fontSize: 18,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                )),
               ),
-            )),
+            ),
           );
         });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: <Color>[
-            Color.fromARGB(255, 187, 178, 178),
-            Color.fromARGB(255, 232, 232, 232)
-          ])),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          child: Expanded(
-            child: Column(
-              children: [
-                SafeArea(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: Stack(
+          children: [
+            Container(
+              height: 230,
+              child: AppBar(
+                backgroundColor: Color.fromARGB(255, 42, 2, 143),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(1000),
+                      bottomRight: Radius.circular(500)),
+                ),
+                //bottom: PreferredSize(
+                //preferredSize: Size.fromHeight(170), child: SizedBox()),
+              ).animate().slideY(duration: 2000.ms),
+            ),
+            Container(
+              height: 210,
+              child: AppBar(
+                backgroundColor: Color.fromARGB(206, 85, 0, 255),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(500),
+                      bottomRight: Radius.circular(1000)),
+                ),
+                //bottom: PreferredSize(
+                // preferredSize: Size.fromHeight(170), child: SizedBox()),
+              ).animate().slideY(duration: 2000.ms, delay: 500.ms),
+            ),
+            SingleChildScrollView(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 245),
                   child: Column(
                     children: [
-                      //const SizedBox(
-                      //height: 3,
-                      //),
-
-                      //Row(
-                      // children: [
-                      //  Container(
-                      ///  width: 20,
-                      // height: 20,
-                      //  decoration: BoxDecoration(color: Colors.blue)),
-                      //],
-                      // ),
-                      Center(
-                        child: Column(
-                          children: [
-                            Lottie.asset("Lottie/slower.json", width: 200)
-                          ],
-                        ),
-                      ),
-
                       Text(
-                          "Welcome to Alarm-app etc \n Let's create an account for you",
-                          style: GoogleFonts.mandali(
-                              textStyle: const TextStyle(fontSize: 25),
-                              fontWeight: FontWeight.w900),
-                          textAlign: TextAlign.center),
-                      const SizedBox(
-                        height: 20,
+                        "Visit Your Dream \nDestination!",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                          fontSize: 21,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        )),
                       ),
-
-                      // ------------
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5.0),
-                        child: TextFields(
-                            controller: emailcontroller,
-                            hint: "Email",
-                            obstext: false),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5.0),
-                        child: TextFields(
-                            controller: passwordcontroller,
-                            hint: "Password",
-                            obstext: true),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5.0),
-                        child: TextFields(
-                            controller: confirmpasswordcontroller,
-                            hint: "Confirm Password",
-                            obstext: true),
-                      ),
-
-                      //const SignUserIn()
-                      const SizedBox(
+                      SizedBox(
                         height: 30,
                       ),
-                      OutlinedButton(
-                        onPressed: () {
-                          return signuserUp();
-                        },
-                        child: Text(
-                          "Sign Up",
-                          style: TextStyle(
-                            fontSize: 25,
-                          ),
-                        ),
-                        style: OutlinedButton.styleFrom(
-                            fixedSize: Size(200, 55),
-                            backgroundColor: Color.fromARGB(181, 170, 0, 0),
-                            foregroundColor:
-                                const Color.fromARGB(255, 251, 251, 251),
-                            side: const BorderSide(
-                                width: 2,
-                                color: Color.fromARGB(255, 255, 255, 255))),
+                      Text(
+                        "Welcome",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        )),
                       ),
-                      const SizedBox(
-                        height: 20,
+                      Text(
+                        "Start your Trip Now!",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                                fontSize: 16,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontWeight: FontWeight.bold)),
                       ),
-                      const Row(
-                        children: [
-                          Expanded(
-                            child: Divider(
-                              thickness: 3,
-                              color: Color.fromRGBO(177, 177, 177, 1),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8),
-                            child: Text(
-                              "Or continue with",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 139, 138, 138)),
-                            ),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              thickness: 3,
-                              color: Color.fromRGBO(177, 177, 177, 1),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Tapableicon(
-                            onTap: () => GoogleAuth().signInWithGoogle(),
-                            imagepath: "Lottie/gogol.png",
-                            height: 40,
-                          ),
-                          Tapableicon(
-                            onTap: () {},
-                            imagepath: "Lottie/apol.png",
-                            height: 40,
-                          )
-                        ],
-                      ),
-
-                      Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      SafeArea(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const Text(
-                              "Already have an account? ",
-                              style: TextStyle(fontSize: 17),
+                            Column(
+                              children: [
+                                TextFields(
+                                    height: 45.0,
+                                    width: 310,
+                                    controller: emailcontroller,
+                                    hint: "Email",
+                                    obstext: false),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                TextFields(
+                                    height: 45.0,
+                                    width: 310,
+                                    controller: passwordcontroller,
+                                    hint: "Password",
+                                    obstext: true),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                TextFields(
+                                    height: 45.0,
+                                    width: 310,
+                                    controller: confirmpasswordcontroller,
+                                    hint: "Confirm Password",
+                                    obstext: true)
+                              ],
                             ),
-                            GestureDetector(
-                              onTap: widget.onTap,
-                              child: const Text(
-                                "Login Here",
-                                style:
-                                    TextStyle(color: Colors.blue, fontSize: 17),
+                            const SizedBox(
+                              height: 60,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(30.0),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color.fromARGB(255, 0, 0, 0)
+                                          .withOpacity(0.4),
+                                      blurRadius: 4,
+                                      offset: Offset(0, 8),
+                                    )
+                                  ]),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  return signuserUp();
+                                },
+                                child: Text(
+                                  "SIGN UP",
+                                  style: GoogleFonts.poppins(
+                                      textStyle: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          letterSpacing: 1,
+                                          fontSize: 20,
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255))),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Color.fromARGB(255, 12, 12, 12),
+                                  minimumSize: Size(160, 50),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            const Row(
+                              children: [
+                                Expanded(
+                                  child: Divider(
+                                    thickness: 2,
+                                    color: Color.fromRGBO(204, 204, 204, 1),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 8),
+                                  child: Text(
+                                    "Or continue with",
+                                    style: TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 139, 138, 138)),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Divider(
+                                    thickness: 2,
+                                    color: Color.fromRGBO(204, 204, 204, 1),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 2,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Tapableicon(
+                                  onTap: () => GoogleAuth().signInWithGoogle(),
+                                  imagepath: "Lottie/gogol.png",
+                                  height: 55,
+                                ),
+                                Tapableicon(
+                                  onTap: () {},
+                                  imagepath: "Lottie/apol.png",
+                                  height: 45,
+                                )
+                              ],
+                            ),
+                            Padding(
+                              //,,
+                              padding: EdgeInsets.all(10.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Already have an account? ",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            fontSize: 15,
+                                            color:
+                                                Color.fromARGB(255, 0, 0, 0))),
+                                  ),
+                                  GestureDetector(
+                                    onTap: widget.onTap,
+                                    child: Text(
+                                      "Login Here",
+                                      style: GoogleFonts.poppins(
+                                          textStyle: const TextStyle(
+                                              fontSize: 15,
+                                              color: Color.fromARGB(
+                                                  255, 23, 154, 255))),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ),
-                      // const SizedBox(
-                      // height: 50,
-                      //)
                     ],
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 }
+
+//class MyPainter extends CustomPainter {
+ // @override
+  //void paint(Canvas canvas, Size size) {
+  //  canvas.drawRect(rect, paint);
+  //}
+
+  //@override
+ // bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    // TODO: implement shouldRepaint
+   // throw UnimplementedError();
+  //}
+//}
+

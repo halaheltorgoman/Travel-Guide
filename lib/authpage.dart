@@ -1,5 +1,6 @@
-import 'package:alarmproject/homepage.dart';
-import 'package:alarmproject/loginpage.dart';
+import 'package:travelguide/homepage.dart';
+import 'package:travelguide/login_register.dart';
+//import 'package:travelguide/loginpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +16,9 @@ class AuthPage extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
         if (snapshot.hasData) {
           return HomePage();
-        } else{
-          return LoginPage();
+        } else {
+          return LoginOrRegister();
         }
-          
       },
     ));
   }

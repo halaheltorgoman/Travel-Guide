@@ -1,8 +1,9 @@
-import 'package:alarmproject/authpage.dart';
-//import 'package:alarmproject/loginpage.dart';
+//import 'package:travelguide/authpage.dart';
+//import 'package:travelguide/loginpage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:travelguide/startup.dart';
 
 class Splash extends StatelessWidget {
   const Splash({super.key});
@@ -10,19 +11,25 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnimatedSplashScreen(
-        splash: SingleChildScrollView(
-          child: Expanded(
-            child: Column(
-              children: [
-                Center(child: Lottie.asset("Lottie/alarm.json", width: 100))
-              ],
+      body: Center(
+        child: AnimatedSplashScreen(
+          duration: 2000,
+          splash: SingleChildScrollView(
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                      child: Lottie.asset("Lottie/loading.json", width: 300)),
+                  Lottie.asset("Lottie/bar.json", width: 300)
+                ],
+              ),
             ),
           ),
+          nextScreen: const startUp(),
+          backgroundColor: Color.fromARGB(255, 255, 255, 255),
+          splashIconSize: 420,
         ),
-        nextScreen: const AuthPage(),
-        backgroundColor: Color.fromARGB(255, 213, 211, 211),
-        splashIconSize: 420,
       ),
     );
   }

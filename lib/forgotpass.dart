@@ -1,3 +1,5 @@
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:travelguide/textfields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -45,49 +47,120 @@ class _ForgotPassState extends State<ForgotPass> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 243, 243, 243),
-      appBar: AppBar(
-        title: const Text(
-          "Forgot Password?",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: Stack(
+          children: [
+            Container(
+              height: 270,
+              child: AppBar(
+                backgroundColor: Color.fromARGB(255, 42, 2, 143),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(2000),
+                      bottomRight: Radius.circular(1000)),
+                ),
+                //bottom: PreferredSize(
+                //preferredSize: Size.fromHeight(170), child: SizedBox()),
+              ).animate().slideY(duration: 2000.ms),
+            ),
+            Container(
+              height: 240,
+              child: AppBar(
+                backgroundColor: Color.fromARGB(206, 85, 0, 255),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(1000),
+                      bottomRight: Radius.circular(2000)),
+                ),
+                //bottom: PreferredSize(
+                // preferredSize: Size.fromHeight(170), child: SizedBox()),
+              ).animate().slideY(duration: 2000.ms, delay: 500.ms),
+            ),
+            SingleChildScrollView(
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 290),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Text(
+                          "Enter Your Email to Reset Your Password",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                            fontSize: 21,
+                            color: Color.fromARGB(255, 0, 0, 0),
+                          )),
+                        ),
+                        SafeArea(
+                          child: Column(
+                            children: [
+                              Column(
+                                children: [
+                                  TextFields(
+                                      height: 48.0,
+                                      width: 310,
+                                      controller: emailcontroller,
+                                      hint: "Email",
+                                      obstext: false),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              const SizedBox(
+                                height: 40,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30.0),
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color.fromARGB(255, 0, 0, 0)
+                                            .withOpacity(0.4),
+                                        blurRadius: 4,
+                                        offset: Offset(0, 8),
+                                      )
+                                    ]),
+                                child: ElevatedButton(
+                                  onPressed: passreset,
+                                  child: Text(
+                                    "RESET PASSWORD",
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            fontSize: 20,
+                                            color: Color.fromARGB(
+                                                255, 255, 255, 255))),
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        Color.fromARGB(255, 12, 12, 12),
+                                    minimumSize: Size(160, 50),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const SizedBox(
+                                height: 2,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        backgroundColor: const Color.fromARGB(255, 166, 7, 7),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              "Enter your Email to Reset Password:",
-              style: TextStyle(
-                fontSize: 25,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          TextFields(
-              controller: emailcontroller, hint: "Email", obstext: false),
-          const SizedBox(
-            height: 20,
-          ),
-          OutlinedButton(
-            onPressed: passreset,
-            child: Text(
-              "Reset Password",
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            style: OutlinedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(181, 170, 0, 0),
-                fixedSize: const Size(200, 55),
-                foregroundColor: const Color.fromARGB(255, 238, 237, 237),
-                side: const BorderSide(
-                    width: 2, color: Color.fromARGB(255, 234, 234, 234))),
-          ),
-        ],
       ),
     );
   }

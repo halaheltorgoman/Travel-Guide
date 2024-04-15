@@ -66,6 +66,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '258248146239',
     projectId: 'authorization-9f41e',
     storageBucket: 'authorization-9f41e.appspot.com',
+    iosClientId:
+        '258248146239-vhoq56aph04ug3o55bst3ukc5p7rr324.apps.googleusercontent.com',
     iosBundleId: 'com.example.alarmproject',
   );
 
@@ -75,6 +77,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '258248146239',
     projectId: 'authorization-9f41e',
     storageBucket: 'authorization-9f41e.appspot.com',
+    iosClientId:
+        '258248146239-hlf2mtjdntq2r13c4354n6ofg246h1gb.apps.googleusercontent.com',
     iosBundleId: 'com.example.alarmproject.RunnerTests',
   );
 }
