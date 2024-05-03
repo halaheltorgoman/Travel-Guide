@@ -1,7 +1,3 @@
-# Travel-Guide
+# map_v1
 
-A Flutter project.
-
-## Getting Started
-
-travel guide application for tourists, refugees, and foreigners
+A new Flutter project.
