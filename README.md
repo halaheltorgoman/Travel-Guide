@@ -1,7 +1,3 @@
-# alarmproject
+# map_v1
 
-A Flutter project.
-
-## Getting Started
-
-Alarm application with puzzles implemented to solve before turning off the alarm
+A new Flutter project.
