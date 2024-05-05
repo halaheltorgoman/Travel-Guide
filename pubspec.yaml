@@ -49,6 +49,12 @@ dependencies:
   cloud_firestore: ^4.17.2
   curved_labeled_navigation_bar: ^2.0.2 
   dropdown_button2: ^2.3.9
+  flutter_map: ^6.1.0
+  flutter_typeahead: ^4.0.0
+  flutter_map_cancellable_tile_provider: ^2.0.0
+  latlong2: ^0.9.1
+
+  http: ^1.0.0
 
 dev_dependencies:
   flutter_lints: ^3.0.1
@@ -109,28 +115,4 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
-name: map_v1
-description: "A new Flutter project."
-publish_to: "none"
-version: 0.1.0
 
-environment:
-  sdk: ">=3.3.0 <4.0.0"
-
-dependencies:
-  flutter:
-    sdk: flutter
-  flutter_map: ^6.1.0
-  flutter_typeahead: ^4.0.0
-  flutter_map_cancellable_tile_provider: ^2.0.0
-  latlong2: ^0.9.1
-  location: ^4.3.0
-  http: ^1.0.0
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^3.0.0
-
-flutter:
-  uses-material-design: true
