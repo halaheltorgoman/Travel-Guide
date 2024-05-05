@@ -42,7 +42,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.alarmproject"
+        applicationId "com.example.travelguide"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 21
@@ -64,5 +64,10 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+implementation("com.squareup.okhttp3:okhttp:4.9.3")
+implementation ('com.google.android.gms:play-services-base:17.6.0')
+implementation ('com.google.android.gms:play-services-basement:17.6.0')
+
+}
 

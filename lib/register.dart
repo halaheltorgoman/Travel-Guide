@@ -1,4 +1,6 @@
 //import 'package:travelguide/signin.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:travelguide/google_apple.dart';
 import 'package:travelguide/services/google_auth.dart';
@@ -8,7 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:flutter_animate/flutter_animate.dart';
-import 'package:lottie/lottie.dart';
+//import 'package:lottie/lottie.dart';
 
 class RegisterUser extends StatefulWidget {
   final Function()? onTap;
@@ -19,6 +21,8 @@ class RegisterUser extends StatefulWidget {
 }
 
 class _RegisterUserState extends State<RegisterUser> {
+  final storageRef = FirebaseStorage.instance.ref();
+
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   final confirmpasswordcontroller = TextEditingController();
@@ -31,10 +35,20 @@ class _RegisterUserState extends State<RegisterUser> {
 
     try {
       if (passwordcontroller.text == confirmpasswordcontroller.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailcontroller.text,
           password: passwordcontroller.text,
         );
+        FirebaseFirestore.instance
+            .collection("Users")
+            .doc(userCredential.user!.email)
+            .set({
+          'username': emailcontroller.text.split('@')[0],
+          'email': emailcontroller.text,
+          'password': passwordcontroller.text,
+          'from': "",
+        });
       } else {
         showErrormsg("Passwords don't match");
       }
@@ -51,8 +65,8 @@ class _RegisterUserState extends State<RegisterUser> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            buttonPadding: EdgeInsets.all(8),
-            backgroundColor: Color.fromARGB(250, 184, 1, 1),
+            buttonPadding: const EdgeInsets.all(8),
+            backgroundColor: const Color.fromARGB(250, 184, 1, 1),
             title: Center(
               child: Text(
                 message,
@@ -77,23 +91,23 @@ class _RegisterUserState extends State<RegisterUser> {
         body: Stack(
           children: [
             Container(
-              height: 230,
+              height: 250,
               child: AppBar(
                 backgroundColor: Color.fromARGB(255, 42, 2, 143),
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(1000),
-                      bottomRight: Radius.circular(500)),
+                      bottomLeft: Radius.circular(2000),
+                      bottomRight: Radius.circular(1000)),
                 ),
                 //bottom: PreferredSize(
                 //preferredSize: Size.fromHeight(170), child: SizedBox()),
               ).animate().slideY(duration: 2000.ms),
             ),
             Container(
-              height: 210,
+              height: 220,
               child: AppBar(
-                backgroundColor: Color.fromARGB(206, 85, 0, 255),
-                shape: RoundedRectangleBorder(
+                backgroundColor: const Color.fromARGB(206, 85, 0, 255),
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(500),
                       bottomRight: Radius.circular(1000)),
@@ -108,6 +122,9 @@ class _RegisterUserState extends State<RegisterUser> {
                   padding: const EdgeInsets.only(top: 245),
                   child: Column(
                     children: [
+                      SizedBox(
+                        height: 20,
+                      ),
                       Text(
                         "Visit Your Dream \nDestination!",
                         textAlign: TextAlign.center,
@@ -117,7 +134,7 @@ class _RegisterUserState extends State<RegisterUser> {
                           color: Color.fromARGB(255, 0, 0, 0),
                         )),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Text(
@@ -150,7 +167,7 @@ class _RegisterUserState extends State<RegisterUser> {
                                     controller: emailcontroller,
                                     hint: "Email",
                                     obstext: false),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 TextFields(
@@ -159,7 +176,7 @@ class _RegisterUserState extends State<RegisterUser> {
                                     controller: passwordcontroller,
                                     hint: "Password",
                                     obstext: true),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 TextFields(
@@ -171,16 +188,16 @@ class _RegisterUserState extends State<RegisterUser> {
                               ],
                             ),
                             const SizedBox(
-                              height: 60,
+                              height: 30,
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(
+                                  borderRadius: const BorderRadius.all(
                                     Radius.circular(30.0),
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color.fromARGB(255, 0, 0, 0)
+                                      color: const Color.fromARGB(255, 0, 0, 0)
                                           .withOpacity(0.4),
                                       blurRadius: 4,
                                       offset: Offset(0, 8),
@@ -190,6 +207,11 @@ class _RegisterUserState extends State<RegisterUser> {
                                 onPressed: () {
                                   return signuserUp();
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 12, 12, 12),
+                                  minimumSize: const Size(160, 50),
+                                ),
                                 child: Text(
                                   "SIGN UP",
                                   style: GoogleFonts.poppins(
@@ -199,11 +221,6 @@ class _RegisterUserState extends State<RegisterUser> {
                                           fontSize: 20,
                                           color: Color.fromARGB(
                                               255, 255, 255, 255))),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Color.fromARGB(255, 12, 12, 12),
-                                  minimumSize: Size(160, 50),
                                 ),
                               ),
                             ),
@@ -255,7 +272,7 @@ class _RegisterUserState extends State<RegisterUser> {
                             ),
                             Padding(
                               //,,
-                              padding: EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.all(10.0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -295,17 +312,3 @@ class _RegisterUserState extends State<RegisterUser> {
     );
   }
 }
-
-//class MyPainter extends CustomPainter {
- // @override
-  //void paint(Canvas canvas, Size size) {
-  //  canvas.drawRect(rect, paint);
-  //}
-
-  //@override
- // bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
-   // throw UnimplementedError();
-  //}
-//}
-

@@ -31,20 +31,21 @@ class TextFields extends StatelessWidget {
           obscureText: obstext,
           decoration: InputDecoration(
               label: label(),
-              fillColor: Color.fromRGBO(157, 186, 221, 0.46),
+              labelStyle: TextStyle(color: Color.fromRGBO(49, 0, 172, 1)),
+              fillColor: Color.fromRGBO(202, 217, 236, 1),
               filled: true,
               contentPadding: EdgeInsets.all(15),
-              hintText: hint,
-              hintStyle: const TextStyle(
-                color: Color.fromRGBO(157, 186, 221, 0.285),
-              ),
+              //hintText: hint,
+              // hintStyle: const TextStyle(
+              //color: Color.fromRGBO(123, 147, 171, 1),
+
               focusedBorder: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(width: 2, color: Colors.transparent),
+                  borderSide: const BorderSide(
+                      width: 1.2, color: Color.fromRGBO(49, 0, 172, 1)),
                   borderRadius: BorderRadius.circular(50.0)),
               enabledBorder: OutlineInputBorder(
                   borderSide: const BorderSide(
-                      width: 2, color: Color.fromARGB(255, 218, 218, 218)),
+                      width: 0.5, color: Color.fromARGB(255, 0, 0, 0)),
                   borderRadius: BorderRadius.circular(50.0))),
         ),
       ),

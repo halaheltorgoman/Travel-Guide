@@ -1,6 +1,6 @@
 {
-    "name": "alarmproject",
-    "short_name": "alarmproject",
+    "name": "travelguide",
+    "short_name": "travelguide",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

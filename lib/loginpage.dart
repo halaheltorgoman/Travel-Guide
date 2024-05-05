@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:lottie/lottie.dart';
+//import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -44,8 +44,8 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            buttonPadding: EdgeInsets.all(8),
-            backgroundColor: Color.fromARGB(250, 184, 1, 1),
+            buttonPadding: const EdgeInsets.all(8),
+            backgroundColor: const Color.fromARGB(250, 184, 1, 1),
             title: Center(
               child: Text(
                 message,
@@ -73,20 +73,20 @@ class _LoginPageState extends State<LoginPage> {
               height: 270,
               child: AppBar(
                 backgroundColor: Color.fromARGB(255, 42, 2, 143),
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(2000),
                       bottomRight: Radius.circular(1000)),
                 ),
                 //bottom: PreferredSize(
                 //preferredSize: Size.fromHeight(170), child: SizedBox()),
-              ).animate().slideY(duration: 2000.ms),
+              ),
             ),
             Container(
               height: 240,
               child: AppBar(
                 backgroundColor: Color.fromARGB(206, 85, 0, 255),
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(1000),
                       bottomRight: Radius.circular(2000)),
@@ -110,8 +110,8 @@ class _LoginPageState extends State<LoginPage> {
                           color: Color.fromARGB(255, 0, 0, 0),
                         )),
                       ),
-                      SizedBox(
-                        height: 30,
+                      const SizedBox(
+                        height: 40,
                       ),
                       Text(
                         "Login to Start",
@@ -142,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                                     controller: emailcontroller,
                                     hint: "Email",
                                     obstext: false),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 TextFields(
@@ -153,7 +153,7 @@ class _LoginPageState extends State<LoginPage> {
                                     obstext: true),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             GestureDetector(
@@ -179,12 +179,12 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(
+                                  borderRadius: const BorderRadius.all(
                                     Radius.circular(30.0),
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Color.fromARGB(255, 0, 0, 0)
+                                      color: const Color.fromARGB(255, 0, 0, 0)
                                           .withOpacity(0.4),
                                       blurRadius: 4,
                                       offset: Offset(0, 8),
@@ -194,6 +194,11 @@ class _LoginPageState extends State<LoginPage> {
                                 onPressed: () {
                                   return signuserin();
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 12, 12, 12),
+                                  minimumSize: const Size(160, 50),
+                                ),
                                 child: Text(
                                   "LOG IN",
                                   style: GoogleFonts.poppins(
@@ -202,11 +207,6 @@ class _LoginPageState extends State<LoginPage> {
                                           fontSize: 20,
                                           color: Color.fromARGB(
                                               255, 255, 255, 255))),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Color.fromARGB(255, 12, 12, 12),
-                                  minimumSize: Size(160, 50),
                                 ),
                               ),
                             ),
@@ -257,7 +257,7 @@ class _LoginPageState extends State<LoginPage> {
 
                             Padding(
                               //,,
-                              padding: EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.all(10.0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

@@ -3,8 +3,8 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:travelguide/authpage.dart';
-import 'package:travelguide/loginpage.dart';
 
+// ignore: camel_case_types
 class startUp extends StatefulWidget {
   const startUp({super.key});
 
@@ -12,6 +12,7 @@ class startUp extends StatefulWidget {
   State<startUp> createState() => _startUpState();
 }
 
+// ignore: camel_case_types
 class _startUpState extends State<startUp> {
   @override
   Widget build(BuildContext context) {
@@ -23,8 +24,8 @@ class _startUpState extends State<startUp> {
           Container(
             height: 300,
             child: AppBar(
-              backgroundColor: Color.fromARGB(255, 42, 2, 143),
-              shape: RoundedRectangleBorder(
+              backgroundColor: const Color.fromARGB(255, 42, 2, 143),
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(2000),
                     bottomRight: Radius.circular(1000)),
@@ -36,8 +37,8 @@ class _startUpState extends State<startUp> {
           Container(
             height: 270,
             child: AppBar(
-              backgroundColor: Color.fromARGB(206, 85, 0, 255),
-              shape: RoundedRectangleBorder(
+              backgroundColor: const Color.fromARGB(206, 85, 0, 255),
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(1000),
                     bottomRight: Radius.circular(2000)),
@@ -66,7 +67,7 @@ class _startUpState extends State<startUp> {
                     color: Color.fromARGB(255, 12, 12, 12),
                   )),
                 ).animate().fade(duration: 2000.ms).slideX(duration: 2000.ms),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -80,7 +81,7 @@ class _startUpState extends State<startUp> {
                       color: Color.fromARGB(255, 235, 235, 235),
                     )),
                   ).animate().fade(delay: 2000.ms, begin: 0.1, end: 0.8).tint(
-                      color: Color.fromARGB(255, 47, 47, 47),
+                      color: const Color.fromARGB(255, 47, 47, 47),
                       duration: 2000.ms),
                 ),
                 const SizedBox(
@@ -88,19 +89,20 @@ class _startUpState extends State<startUp> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(30.0),
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.4),
+                          color: const Color.fromARGB(255, 0, 0, 0)
+                              .withOpacity(0.4),
                           blurRadius: 4,
-                          offset: Offset(0, 8),
+                          offset: const Offset(0, 8),
                         )
                       ]),
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(265, 60),
+                        minimumSize: const Size(265, 60),
                         backgroundColor: const Color.fromARGB(255, 23, 23, 23),
                         shape: const RoundedRectangleBorder(
                             borderRadius:

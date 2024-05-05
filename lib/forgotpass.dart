@@ -37,7 +37,7 @@ class _ForgotPassState extends State<ForgotPass> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              backgroundColor: const Color.fromARGB(235, 249, 187, 3),
+              backgroundColor: Color.fromARGB(235, 249, 3, 3),
               content: Text(e.message.toString(),
                   style: const TextStyle(color: Colors.white, fontSize: 20)),
             );
@@ -56,8 +56,8 @@ class _ForgotPassState extends State<ForgotPass> {
             Container(
               height: 270,
               child: AppBar(
-                backgroundColor: Color.fromARGB(255, 42, 2, 143),
-                shape: RoundedRectangleBorder(
+                backgroundColor: const Color.fromARGB(255, 42, 2, 143),
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(2000),
                       bottomRight: Radius.circular(1000)),
@@ -69,8 +69,8 @@ class _ForgotPassState extends State<ForgotPass> {
             Container(
               height: 240,
               child: AppBar(
-                backgroundColor: Color.fromARGB(206, 85, 0, 255),
-                shape: RoundedRectangleBorder(
+                backgroundColor: const Color.fromARGB(206, 85, 0, 255),
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(1000),
                       bottomRight: Radius.circular(2000)),
@@ -108,7 +108,7 @@ class _ForgotPassState extends State<ForgotPass> {
                                       obstext: false),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               const SizedBox(
@@ -116,19 +116,25 @@ class _ForgotPassState extends State<ForgotPass> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
+                                    borderRadius: const BorderRadius.all(
                                       Radius.circular(30.0),
                                     ),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color.fromARGB(255, 0, 0, 0)
-                                            .withOpacity(0.4),
+                                        color:
+                                            const Color.fromARGB(255, 0, 0, 0)
+                                                .withOpacity(0.4),
                                         blurRadius: 4,
-                                        offset: Offset(0, 8),
+                                        offset: const Offset(0, 8),
                                       )
                                     ]),
                                 child: ElevatedButton(
                                   onPressed: passreset,
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        const Color.fromARGB(255, 12, 12, 12),
+                                    minimumSize: const Size(160, 50),
+                                  ),
                                   child: Text(
                                     "RESET PASSWORD",
                                     style: GoogleFonts.poppins(
@@ -136,11 +142,6 @@ class _ForgotPassState extends State<ForgotPass> {
                                             fontSize: 20,
                                             color: Color.fromARGB(
                                                 255, 255, 255, 255))),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor:
-                                        Color.fromARGB(255, 12, 12, 12),
-                                    minimumSize: Size(160, 50),
                                   ),
                                 ),
                               ),
