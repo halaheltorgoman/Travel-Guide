@@ -30,8 +30,6 @@ class _startUpState extends State<startUp> {
                     bottomLeft: Radius.circular(2000),
                     bottomRight: Radius.circular(1000)),
               ),
-              //bottom: PreferredSize(
-              //preferredSize: Size.fromHeight(170), child: SizedBox()),
             ).animate().slideY(duration: 2000.ms),
           ),
           Container(
@@ -43,8 +41,6 @@ class _startUpState extends State<startUp> {
                     bottomLeft: Radius.circular(1000),
                     bottomRight: Radius.circular(2000)),
               ),
-              //bottom: PreferredSize(
-              // preferredSize: Size.fromHeight(170), child: SizedBox()),
             ).animate().slideY(duration: 2000.ms, delay: 500.ms),
           ),
           Padding(
@@ -85,7 +81,7 @@ class _startUpState extends State<startUp> {
                       duration: 2000.ms),
                 ),
                 const SizedBox(
-                  height: 120,
+                  height: 170,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -112,13 +108,13 @@ class _startUpState extends State<startUp> {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => const AuthPage()));
                       },
-                      child: const Text(
-                        "START NOW",
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      )),
+                      child: Text("START NOW",
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                  fontSize: 24,
+                                  color: Color.fromARGB(255, 255, 255, 255))))),
                 ),
               ],
             ),

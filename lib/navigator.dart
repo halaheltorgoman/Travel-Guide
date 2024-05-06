@@ -40,7 +40,6 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
         duration: Duration(milliseconds: 200),
         curve: Curves.easeInOut,
       );
-      Navigator.pop(context);
     });
   }
 
@@ -91,7 +90,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
                   bottomRight: Radius.circular(30)),
             ),
             toolbarHeight: 65,
-            backgroundColor: Color.fromARGB(255, 63, 3, 213),
+            backgroundColor: Color.fromARGB(255, 33, 33, 33),
             leading: Padding(
               padding: const EdgeInsets.all(2.0),
               child: IconButton(
@@ -135,7 +134,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
           },
         ),
         bottomNavigationBar: CurvedNavigationBar(
-          color: Color.fromARGB(255, 63, 3, 213),
+          color: Color.fromARGB(255, 33, 33, 33),
           backgroundColor: Color.fromARGB(0, 255, 255, 255),
           items: const [
             CurvedNavigationBarItem(

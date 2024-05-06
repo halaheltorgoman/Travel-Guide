@@ -32,7 +32,7 @@ class TextFields extends StatelessWidget {
           decoration: InputDecoration(
               label: label(),
               labelStyle: TextStyle(color: Color.fromRGBO(49, 0, 172, 1)),
-              fillColor: Color.fromRGBO(202, 217, 236, 1),
+              fillColor: Color.fromARGB(206, 233, 233, 233),
               filled: true,
               contentPadding: EdgeInsets.all(15),
               //hintText: hint,

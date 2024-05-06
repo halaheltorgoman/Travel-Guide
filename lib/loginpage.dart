@@ -4,9 +4,9 @@ import 'package:travelguide/google_apple.dart';
 import 'package:travelguide/services/google_auth.dart';
 import 'package:travelguide/textfields.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 //import 'package:lottie/lottie.dart';
@@ -32,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailcontroller.text, password: passwordcontroller.text);
+
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);

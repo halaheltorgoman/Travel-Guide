@@ -33,7 +33,7 @@ class _EditProfileState extends State<EditProfile> {
     'Mexico',
     'Netherlands',
     'Spain',
-    'Turkey'
+    'Turkey',
   ];
   String? Countryfrom;
   Future<void> userCountry() async {
@@ -99,9 +99,17 @@ class _EditProfileState extends State<EditProfile> {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Column(
         children: [
-          const Text(
+          Text(
             "Set your Profile Picture",
-            style: TextStyle(fontSize: 20),
+            style: GoogleFonts.poppins(
+                textStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                    fontSize: 20,
+                    color: Color.fromARGB(255, 85, 0, 255))),
+          ),
+          SizedBox(
+            height: 30,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -110,15 +118,28 @@ class _EditProfileState extends State<EditProfile> {
                 onPressed: () {
                   photofrom(ImageSource.camera);
                 },
-                icon: const Icon(Icons.camera_alt),
-                label: const Text("Camera"),
+                icon: const Icon(Icons.camera_alt,
+                    size: 30, color: Color.fromARGB(255, 85, 0, 255)),
+                label: const Text(
+                  "Camera",
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 30, 0, 69), fontSize: 18),
+                ),
               ),
               TextButton.icon(
                 onPressed: () {
                   photofrom(ImageSource.gallery);
                 },
-                icon: const Icon(Icons.photo),
-                label: const Text("Photos"),
+                icon: const Icon(
+                  Icons.photo,
+                  size: 30,
+                  color: Color.fromARGB(255, 85, 0, 255),
+                ),
+                label: const Text(
+                  "Photos",
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 22, 0, 69), fontSize: 18),
+                ),
               ),
             ],
           ),
@@ -222,7 +243,7 @@ class _EditProfileState extends State<EditProfile> {
                         height: 150,
                         child: AppBar(
                           automaticallyImplyLeading: false,
-                          backgroundColor: Color.fromARGB(159, 214, 212, 248),
+                          backgroundColor: Color.fromARGB(206, 162, 162, 162),
                           shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(2000),
@@ -245,12 +266,10 @@ class _EditProfileState extends State<EditProfile> {
                         ),
                         actions: [
                           IconButton(
-                              onPressed: () async {
-                                await signOut();
-                              },
-                              icon: Icon(
-                                Icons.logout,
-                                color: Colors.white,
+                              onPressed: () => Navigator.of(context).pop(),
+                              icon: const Icon(
+                                Icons.cancel_outlined,
+                                color: Color.fromARGB(255, 0, 0, 0),
                                 size: 30,
                               ))
                         ],
@@ -291,13 +310,13 @@ class _EditProfileState extends State<EditProfile> {
                 SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       DropdownButtonHideUnderline(
                         child: DropdownButton2<String>(
                           isExpanded: true,
-                          hint: Text(
+                          hint: const Text(
                             'Select Country',
                             style: TextStyle(
                               fontSize: 14,
@@ -336,21 +355,21 @@ class _EditProfileState extends State<EditProfile> {
                                   offset: Offset(0, 4),
                                 )
                               ],
-                              color: Color.fromARGB(255, 63, 3, 213),
+                              color: const Color.fromARGB(255, 42, 2, 143),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             padding: EdgeInsets.symmetric(horizontal: 10),
                             height: 40,
-                            width: 140,
+                            width: 155,
                           ),
                           dropdownStyleData: DropdownStyleData(
                             maxHeight: 190,
                             width: 160,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(14),
-                              color: Color.fromARGB(255, 135, 91, 248),
+                              color: Color.fromARGB(255, 34, 34, 34),
                             ),
-                            offset: const Offset(-8, 0),
+                            offset: const Offset(-2, 0),
                             scrollbarTheme: ScrollbarThemeData(
                               radius: const Radius.circular(40),
                               thickness: MaterialStateProperty.all(6),
@@ -369,7 +388,7 @@ class _EditProfileState extends State<EditProfile> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                       TextFields2(
@@ -401,11 +420,11 @@ class _EditProfileState extends State<EditProfile> {
                           Transform.flip(
                             flipY: true,
                             child: Container(
-                              height: 150,
+                              height: 160,
                               child: AppBar(
                                 automaticallyImplyLeading: false,
                                 backgroundColor:
-                                    Color.fromARGB(159, 214, 212, 248),
+                                    Color.fromARGB(206, 162, 162, 162),
                                 shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                       // bottomLeft: Radius.circular(2000),
