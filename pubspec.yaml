@@ -50,14 +50,17 @@ dependencies:
   curved_labeled_navigation_bar: ^2.0.2 
   dropdown_button2: ^2.3.9
   flutter_map: ^6.1.0
+  flutter_map_cancellable_tile_provider: ^2.0.0
   flutter_typeahead: ^4.0.0
-
- 
   latlong2: ^0.9.1
+  url_launcher: ^6.2.6
+  speech_to_text: ^6.6.1
+  permission_handler: ^11.3.1
+  http: ^1.2.1
   location: ^6.0.1
   
 
-  http: ^1.0.0
+
 
 dev_dependencies:
   flutter_lints: ^3.0.1

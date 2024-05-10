@@ -10,8 +10,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:travelguide/eat_out.dart';
 
 import 'package:travelguide/explore.dart';
-import 'package:travelguide/hotels.dart';
+import 'package:travelguide/hotel_screens/hotels_screen.dart';
+
 import 'package:travelguide/maps.dart';
+
 import 'package:travelguide/profile.dart';
 
 import 'package:travelguide/translator.dart';
@@ -47,7 +49,7 @@ class _NavigatorScreenState extends State<NavigatorScreen> {
     Explore(),
     Maps(),
     Translator(),
-    Hotels(),
+    HotelsPage(),
     EatOut(),
   ];
 
