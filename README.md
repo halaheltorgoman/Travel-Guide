@@ -1,6 +1,6 @@
-# map_v1
+A Mobile Application done using flutter framework and Firebase cli,
+a Travel guide application containing features like a Map, and a Translator that are essential for a traveller visiting Alexandria, Egypt.
 
-A new Flutter project.
 
 
 Figma Design Link:
