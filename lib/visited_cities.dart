@@ -26,7 +26,7 @@ class _VisitedCitiesState extends State<VisitedCities> {
       //create an instance of firebase storage
       final storage = FirebaseStorage.instance;
       //reference to firebase folder
-      final folder = storage.ref().child('Cities');
+      final folder = storage.ref().child('cities');
       // retrieve files from firebase Storage folder
       folder.listAll().then((result) {
         //iterate over each item and represent by refrence

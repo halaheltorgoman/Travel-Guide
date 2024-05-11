@@ -23,7 +23,7 @@ class _ExploreState extends State<Explore> {
       //create an instance of firebase storage
       final storage = FirebaseStorage.instance;
       //reference to firebase folder
-      final folder = storage.ref().child('places');
+      final folder = storage.ref().child('Places');
       // retrieve files from firebase Storage folder
       folder.listAll().then((result) {
         //iterate over each item and represent by refrence
