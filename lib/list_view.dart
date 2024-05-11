@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ListElementView extends StatefulWidget {
   const ListElementView(this.path, this.name, {super.key});
@@ -56,9 +57,13 @@ class _ListElementViewState extends State<ListElementView> {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: Image.network(
-                            snapshot.data!,
-                            fit: BoxFit.cover,
+                          child: Container(
+                            width: double.infinity,
+                            height: 150,
+                            child: Image.network(
+                              snapshot.data!,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -75,15 +80,15 @@ class _ListElementViewState extends State<ListElementView> {
                           child: Center(
                             child: Text(
                               widget.name,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 40,
-                                fontWeight: FontWeight.w900,
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                    fontSize: 30,
+                                    color: Color.fromARGB(255, 255, 255, 255)),
                                 shadows: [
                                   Shadow(
                                     color: Colors.black,
-                                    offset: Offset(2, 2),
-                                    blurRadius: 3,
+                                    offset: Offset(0, 4),
+                                    blurRadius: 2,
                                   ),
                                 ],
                               ),

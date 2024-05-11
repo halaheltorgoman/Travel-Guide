@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:async';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
@@ -16,6 +18,13 @@ class Translator2 extends StatefulWidget {
 }
 
 class _Translator2State extends State<Translator2> {
+  final List<String> items = [
+    'en',
+    'ar',
+    'es',
+    'de',
+  ];
+
   void listenForPermissions() async {
     final status = await Permission.microphone.status;
     switch (status) {
@@ -120,14 +129,117 @@ class _Translator2State extends State<Translator2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 241, 241, 241),
       appBar: AppBar(
-        title: const Text('voice recognition'),
+        backgroundColor: Colors.transparent,
+        title: Text('Voice Recognition',
+            style: GoogleFonts.poppins(
+                textStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                    color: Color.fromARGB(255, 0, 0, 0)))),
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              const SizedBox(
+                height: 80,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(width: 30), // Add padding here
+                  Text(
+                    "   Language:",
+                    style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 47, 0, 255))),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 6.0),
+              Padding(
+                padding: const EdgeInsets.only(right: 200),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton2<String>(
+                    isExpanded: true,
+                    hint: const Text(
+                      'Select Lang',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color.fromARGB(255, 187, 186, 186),
+                      ),
+                    ),
+                    items: items
+                        .map((String item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Center(
+                                child: Text(item,
+                                    style: GoogleFonts.poppins(
+                                        textStyle: const TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            letterSpacing: 1,
+                                            fontSize: 18,
+                                            color: Color.fromARGB(
+                                                255, 255, 255, 255)))),
+                              ),
+                            ))
+                        .toList(),
+                    value: _localeId,
+                    onChanged: (text) {
+                      setState(() {
+                        _localeId = '$text';
+                      });
+                    },
+                    buttonStyleData: ButtonStyleData(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(255, 0, 0, 0)
+                                .withOpacity(0.4),
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                          )
+                        ],
+                        color: const Color.fromARGB(255, 63, 3, 213),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      height: 40,
+                      width: 140,
+                    ),
+                    dropdownStyleData: DropdownStyleData(
+                      maxHeight: 190,
+                      width: 160,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14),
+                        color: Color.fromARGB(255, 135, 91, 248),
+                      ),
+                      offset: const Offset(-8, 0),
+                      scrollbarTheme: ScrollbarThemeData(
+                        radius: const Radius.circular(40),
+                        thickness: MaterialStateProperty.all(6),
+                        thumbVisibility: MaterialStateProperty.all(true),
+                      ),
+                    ),
+                    iconStyleData: const IconStyleData(
+                      icon: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        color: Colors.white,
+                        size: 14,
+                      ),
+                    ),
+                    menuItemStyleData: const MenuItemStyleData(
+                      height: 40,
+                    ),
+                  ),
+                ),
+              ),
+
               // floatingActionButton: FloatingActionButton(
               //   onPressed:
               //       // If not yet listening for speech start, otherwise stop
@@ -135,6 +247,9 @@ class _Translator2State extends State<Translator2> {
               //   tooltip: 'Listen',
               //   child: Icon(_speechToText.isNotListening ? Icons.mic_off : Icons.mic),
               // ),
+              const SizedBox(
+                height: 80,
+              ),
               GestureDetector(
                 onLongPress: _startListening,
                 onLongPressUp: _stopListening,
@@ -177,7 +292,7 @@ class _Translator2State extends State<Translator2> {
               //   ),
               // ),
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(10),
                 child: Text(
                   // If listening is active show the recognized words
                   _speechToText.isListening
@@ -192,43 +307,7 @@ class _Translator2State extends State<Translator2> {
                 ),
               ),
 
-              const SizedBox(height: 20.0),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(width: 30), // Add padding here
-                  Text(
-                    "Language Name",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 6.0),
-              Material(
-                borderRadius: const BorderRadius.all(Radius.circular(40)),
-                elevation: 4.0,
-                child: SizedBox(
-                  width: 350, // Set the width as per your requirement
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      filled: true,
-                      fillColor: Color.fromARGB(255, 210, 223, 239),
-                      contentPadding:
-                          EdgeInsets.all(25), // Adjust padding as needed
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(40)),
-                      ),
-                    ),
-                    maxLines: null,
-                    onChanged: (text) {
-                      debugPrint('changed text $text');
-                      setState(() {
-                        _localeId = '$text';
-                      });
-                    },
-                  ),
-                ),
-              ),
+              const SizedBox(height: 40.0),
 
               // TextField(
               //   decoration: const InputDecoration(
@@ -249,30 +328,43 @@ class _Translator2State extends State<Translator2> {
               // ),
               // Translated Text
               const SizedBox(height: 44.0),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(width: 30), // Add padding here
-                  Text(
-                    "Arabic",
-                    style: TextStyle(fontSize: 18),
-                  ),
+                  Text(" Translated Language",
+                      style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18,
+                              color: Color.fromARGB(255, 0, 0, 0)))),
                 ],
               ),
 
               const SizedBox(height: 6.0),
               Material(
-                borderRadius: const BorderRadius.all(Radius.circular(40)),
+                color: Colors.white,
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
                 elevation: 4.0,
                 child: SizedBox(
-                  width: 350, // Set the width as per your requirement
+                  width: 350,
+                  height: 270, // Set the width as per your requirement
                   child: InputDecorator(
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 1, color: Color.fromRGBO(49, 0, 172, 1)),
+                          borderRadius: BorderRadius.circular(50.0)),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                              width: 0.5,
+                              color: Color.fromARGB(255, 255, 255, 255)),
+                          borderRadius: BorderRadius.circular(50.0)),
                       filled: true,
-                      fillColor: Color.fromARGB(255, 210, 223, 239),
+                      fillColor: Color.fromARGB(255, 255, 255, 255),
                       contentPadding:
                           EdgeInsets.all(25), // Adjust padding as needed
-                      border: OutlineInputBorder(
+                      border: const OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(40)),
                       ),
                     ),

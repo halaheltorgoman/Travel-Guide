@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:async';
-import 'dart:math';
-import 'package:csv/csv.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:travelguide/translator2.dart';
 
@@ -22,7 +22,7 @@ class _TranslatorState extends State<Translator> {
   bool _isLoading =
       false; // Flag to control the visibility of loading animation
 
-  List<List<dynamic>> _dataCSV = [];
+  //List<List<dynamic>> _dataCSV = [];
 
   var arabicProverb = "";
   var phoneticTranscription = "";
@@ -33,7 +33,7 @@ class _TranslatorState extends State<Translator> {
   @override
   void initState() {
     super.initState();
-    _loadProverbsCSV();
+    //_loadProverbsCSV();
   }
 
   @override
@@ -45,32 +45,42 @@ class _TranslatorState extends State<Translator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 241, 241, 241),
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: const Text('Text Translator'),
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-      ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.only(top: 160.0, left: 20, right: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // Input Text
-              const Text(
-                "Enter your text",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
+              Padding(
+                padding: const EdgeInsets.only(right: 200.0),
+                child: Text("Enter your text",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 23,
+                            color: Color.fromARGB(255, 0, 0, 0)))),
               ),
               const SizedBox(height: 8.0),
               Material(
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
                 elevation: 4.0,
                 child: TextField(
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                            width: 1, color: Color.fromRGBO(49, 0, 172, 1)),
+                        borderRadius: BorderRadius.circular(20.0)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                            width: 0.5,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                        borderRadius: BorderRadius.circular(20.0)),
                     filled: true,
-                    fillColor: Color.fromARGB(255, 210, 223, 239),
+                    fillColor: Color.fromARGB(255, 255, 255, 255),
                     contentPadding: EdgeInsets.all(55),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -83,22 +93,36 @@ class _TranslatorState extends State<Translator> {
                 ),
               ),
 
-              const SizedBox(height: 24.0),
+              const SizedBox(height: 60.0),
 
               // Translated Text
-              const Text(
-                "Translated",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
+              Padding(
+                padding: const EdgeInsets.only(right: 240),
+                child: Text("Translated",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 23,
+                            color: Color.fromARGB(255, 0, 0, 0)))),
               ),
               const SizedBox(height: 8.0),
               Material(
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
                 elevation: 4.0,
                 child: InputDecorator(
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 1, color: Color.fromRGBO(49, 0, 172, 1)),
+                          borderRadius: BorderRadius.circular(50.0)),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              width: 0.5,
+                              color: Color.fromARGB(255, 255, 255, 255)),
+                          borderRadius: BorderRadius.circular(50.0)),
                       filled: true,
-                      fillColor: Color.fromARGB(255, 210, 223, 239),
+                      fillColor: Color.fromARGB(255, 255, 255, 255),
                       contentPadding: EdgeInsets.all(55),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -128,14 +152,8 @@ class _TranslatorState extends State<Translator> {
                             // ),
                           )),
               ),
+
               const SizedBox(height: 20),
-              TextButton(
-                onPressed: () => _showRandomProverbDialog(),
-                child: const Text(
-                    style: TextStyle(fontSize: 18),
-                    "Show a random Egyptian proverb"),
-              ),
-              const SizedBox(height: 40),
               Center(
                 child: InkWell(
                   onTap: () {
@@ -144,25 +162,34 @@ class _TranslatorState extends State<Translator> {
                       MaterialPageRoute(builder: (context) => Translator2()),
                     );
                   },
-                  child: const Text(
-                    "Or Try Typing it out",
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.blue,
-                      decoration: TextDecoration.underline,
-                      decorationColor: Colors.blue,
-                      // Set the underline color
-                      shadows: [
-                        Shadow(
-                          blurRadius: 40.0,
-                          color: Colors.grey,
-                          offset: Offset(1.0, 3.0),
-                        ),
-                      ],
-                    ),
+                  child: Text(
+                    "Or Try Recording",
+                    style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.blue,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                            color: Colors.blue)),
                   ),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              // Material(
+              //   borderRadius: const BorderRadius.all(Radius.circular(20)),
+              //   child: TextButton(
+              //     onPressed: () => _showRandomProverbDialog(),
+              //     child: Text(
+              //         style: GoogleFonts.poppins(
+              //             textStyle: TextStyle(
+              //                 fontWeight: FontWeight.normal,
+              //                 fontSize: 18,
+              //                 color: Color.fromARGB(255, 47, 0, 255))),
+              //         "Show a random Egyptian proverb"),
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -171,65 +198,65 @@ class _TranslatorState extends State<Translator> {
   }
 
   // I think it implacitly takes the 2d list by reference so memory good
-  List<dynamic> chooseRandomProverb(List<List<dynamic>> proverbsCSV) {
-    var randomValue = Random().nextInt(proverbsCSV.length - 1) + 1;
-    return proverbsCSV[randomValue];
-  }
+  // List<dynamic> chooseRandomProverb(List<List<dynamic>> proverbsCSV) {
+  //   var randomValue = Random().nextInt(proverbsCSV.length - 1) + 1;
+  //   return proverbsCSV[randomValue];
+  // }
 
-  void _showRandomProverbDialog() {
-    showDialog<String>(
-      context: context,
-      builder: (BuildContext context) {
-        // Choose a random proverb
-        var proverb = chooseRandomProverb(_dataCSV);
-        var arabic = proverb[0];
-        var transpilation = proverb[1];
-        var english = proverb[2];
+  // void _showRandomProverbDialog() {
+  //   showDialog<String>(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       // Choose a random proverb
+  //       var proverb = chooseRandomProverb(_dataCSV);
+  //       var arabic = proverb[0];
+  //       var transpilation = proverb[1];
+  //       var english = proverb[2];
 
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return AlertDialog(
-              title: const Text('Random Egyptian Proverb'),
-              content: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    arabic,
-                    style: const TextStyle(fontSize: 18),
-                    textDirection: TextDirection.rtl,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      transpilation,
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Text(
-                    english,
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      setState(() {
-                        // Choose a new random proverb
-                        var newProverb = chooseRandomProverb(_dataCSV);
-                        arabic = newProverb[0];
-                        transpilation = newProverb[1];
-                        english = newProverb[2];
-                      });
-                    },
-                    child: const Text("Next"),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
+  //       return StatefulBuilder(
+  //         builder: (context, setState) {
+  //           return AlertDialog(
+  //             title: const Text('Random Egyptian Proverb'),
+  //             content: Column(
+  //               crossAxisAlignment: CrossAxisAlignment.center,
+  //               mainAxisSize: MainAxisSize.min,
+  //               children: [
+  //                 Text(
+  //                   arabic,
+  //                   style: const TextStyle(fontSize: 18),
+  //                   textDirection: TextDirection.rtl,
+  //                 ),
+  //                 Padding(
+  //                   padding: const EdgeInsets.all(8.0),
+  //                   child: Text(
+  //                     transpilation,
+  //                     style: const TextStyle(fontSize: 18),
+  //                   ),
+  //                 ),
+  //                 Text(
+  //                   english,
+  //                   style: const TextStyle(fontSize: 18),
+  //                 ),
+  //                 TextButton(
+  //                   onPressed: () {
+  //                     setState(() {
+  //                       // Choose a new random proverb
+  //                       var newProverb = chooseRandomProverb(_dataCSV);
+  //                       arabic = newProverb[0];
+  //                       transpilation = newProverb[1];
+  //                       english = newProverb[2];
+  //                     });
+  //                   },
+  //                   child: const Text("Next"),
+  //                 ),
+  //               ],
+  //             ),
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 
   Future<void> _translateText(String inputText) async {
     _debounce?.cancel();
@@ -255,21 +282,21 @@ class _TranslatorState extends State<Translator> {
     });
   }
 
-  void _loadProverbsCSV() async {
-    try {
-      // read from csv
-      final String csvContent =
-          await rootBundle.loadString("assets/proverbs.csv");
-      List<List<dynamic>> rowsAsListOfValues =
-          // custom eol instead of I think \r\n
-          const CsvToListConverter(eol: "\n").convert(csvContent);
-      setState(() {
-        _dataCSV = rowsAsListOfValues;
-      });
-    } catch (e) {
-      debugPrint("Error reading CSV file: $e");
-    }
-  }
+  // void _loadProverbsCSV() async {
+  //   try {
+  //     // read from csv
+  //     final String csvContent =
+  //         await rootBundle.loadString("assets/proverbs.csv");
+  //     List<List<dynamic>> rowsAsListOfValues =
+  //         // custom eol instead of I think \r\n
+  //         const CsvToListConverter(eol: "\n").convert(csvContent);
+  //     setState(() {
+  //       _dataCSV = rowsAsListOfValues;
+  //     });
+  //   } catch (e) {
+  //     debugPrint("Error reading CSV file: $e");
+  //   }
+  // }
 
   Future<String> translate(String text) async {
     var translationRequest = TranslationRequest("auto", "ar", text);
@@ -295,16 +322,6 @@ class _TranslatorState extends State<Translator> {
       // Never
     }
   }
-}
-
-class CsvContentenent {
-  // Arabic proverb,Phonetic Transcription,English Translation
-  final String arabicProverb;
-  final String phoneticTranscription;
-  final String englishTranslation;
-
-  CsvContentenent(
-      this.arabicProverb, this.phoneticTranscription, this.englishTranslation);
 }
 
 class TranslationRequest {
